@@ -1,0 +1,2 @@
+[21-Aug-2021 11:53:04 UTC] PHP Warning:  require_once(/opt/lampp/htdocs/game_tournament/wp-admin/includes/PHPMailer/PHPMailer.php): failed to open stream: No such file or directory in /opt/lampp/htdocs/game_tournament/wp-content/plugins/mkd-core/index.php on line 646
+[21-Aug-2021 11:53:04 UTC] PHP Fatal error:  require_once(): Failed opening required '/opt/lampp/htdocs/game_tournament/wp-admin/includes/PHPMailer/PHPMailer.php' (include_path='.:/usr/share/php') in /opt/lampp/htdocs/game_tournament/wp-content/plugins/mkd-core/index.php on line 646

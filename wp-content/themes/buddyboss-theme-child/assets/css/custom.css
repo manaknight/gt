@@ -1,0 +1,195 @@
+/*--------------------------------------------------------------
+This is your custom stylesheet.
+
+Add your own styles here to make theme updates easier.
+To override any styles from other stylesheets, simply copy them into here and edit away.
+
+Make sure to respect the media queries! Otherwise you may
+accidentally add desktop styles to the mobile layout.
+https://www.w3schools.com/css/css_rwd_mediaqueries.asp
+--------------------------------------------------------------*/
+
+
+/* .cus-bp-grid {
+    margin-bottom: 10px !important;
+} */
+
+.tours-list-container .filter-container.py-4 .form-group {
+    margin-bottom: 0 !important;
+}
+
+#tour-info-content #tour-content {
+    padding-right: 20px;
+}
+
+.text-list.preview-portfolio p:first-child {
+    margin-top: 15px !important;
+    display: block !important;
+}
+
+.text-list.preview-portfolio p {
+    display: none;
+}
+
+header.profile-header~.bp-profile-wrapper {
+    margin-bottom: 15px;
+}
+
+#bbpress-forums {
+    margin-bottom: 0;
+}
+
+.tourny-card-title~span {
+    display: -webkit-box !important;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.tourny-card-title {
+    margin: 10px 0 !important;
+    line-height: 1.2em !important;
+}
+
+.details h1 {
+    line-height: 1.2em;
+    margin-bottom: 10px !important;
+}
+
+@media only screen and (min-width: 992px) {
+    #bp-cover-image-feedback {
+        margin-bottom: 20px;
+    }
+    .warning {
+        margin: 20px 0;
+    }
+    #bp-delete-cover-image-container p {
+        margin: 0 0 20px;
+        line-height: 1.2em;
+    }
+    .content-area {
+        padding: 0 0 0;
+    }
+    .bp-profile-wrapper {
+        margin-bottom: 0;
+    }
+    header.profile-header {
+        margin-top: 15px;
+    }
+    #whats-new-form {
+        margin-bottom: 0;
+    }
+    .bb-grid {
+        margin-bottom: 10px;
+    }
+}
+
+.margin-b-0 {
+    margin-bottom: 0 !important;
+}
+
+table#member-invites-table tbody tr:first-child td:last-child {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.bp-document-listing~.media {
+    display: block !important;
+}
+
+.preview-modal .preview-content p {
+    color: #000000;
+    margin: 0;
+    word-break: break-word;
+}
+
+.preview-content.flex-css .preview-content-box {
+    max-height: 50vh;
+    overflow: auto;
+}
+
+.preview-content-box::-webkit-scrollbar {
+    width: 4px;
+}
+
+.preview-content-box::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.preview-content-box::-webkit-scrollbar-thumb {
+    background: rgb(24, 24, 24);
+    border-radius: 10px;
+}
+
+.preview-content-box::-webkit-scrollbar-thumb:hover {
+    background: rgb(19, 19, 19);
+}
+
+.preview-portfolio div p {
+    display: none;
+    -webkit-line-clamp: 17;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.2em;
+}
+
+.preview-portfolio div p:first-child {
+    display: -webkit-box;
+}
+
+.preview-portfolio div p span {
+    display: none;
+    -webkit-line-clamp: 16;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.preview-portfolio div p span:first-child {
+    display: -webkit-box !important;
+}
+
+.upload-doc-btn {
+    width: 100%;
+    display: block;
+    clear: both;
+    margin-top: 20px;
+}
+
+.upload-doc-btn a {
+    display: block !important;
+    display: block;
+    width: fit-content;
+    border: 1px solid #007CFF;
+    color: #007CFF;
+    border-radius: 50px;
+    padding: 6px 30px;
+}
+
+.visib-label {
+    margin-bottom: 5px;
+}
+
+.visib-label~div {
+    float: none !important;
+}
+
+.text-list.preview-portfolio div div {
+    display: none;
+}
+
+.text-list.preview-portfolio div div:first-child {
+    display: block !important;
+}
+
+.inner-name.flex-css~.text-list {
+    max-height: 280px;
+}
+
+.box.flex-css {
+    display: block !important;
+    text-align: center;
+    word-break: break-all;
+    padding: 20px;
+    overflow: auto;
+}

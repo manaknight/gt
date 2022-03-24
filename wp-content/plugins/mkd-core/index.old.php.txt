@@ -1,0 +1,225 @@
+<?php
+
+/**
+ * @package Manaknightdigital
+ * @version 1.0.0
+ */
+/*
+Plugin Name: Manaknight Core
+Plugin URI: https://manaknightdigital.com
+Description: Game tournament
+Author: Ryan Wong
+Version: 1.0.0
+Author URI: https://manaknightdigital.com
+*/
+
+/*
+Buddy boss
+User: Caleb4705@icloud.com
+Password: 1234567890-/:;()$&@"
+
+e3cf5de9-8cf3-4fac-9309-0443830dc276
+caleb4705@icloud.com
+
+my.interserver.net
+caleb4705@icloud.com
+xoKnih-jesky0-wanbyn
+*/
+define('ROOTDIR', plugin_dir_path(__FILE__));
+
+//Create Tables in Database
+
+function mkd_core_install()
+{
+  $sql = array(
+    "
+  CREATE TABLE contest_category (
+    id INT(11) NOT NULL AUTO_INCREMENT,
+    `name` varchar(255) NOT NULL,
+    PRIMARY KEY (id));",
+    "
+  CREATE TABLE content_background_images(
+    id INT(11) NOT NULL AUTO_INCREMENT,
+    `name` varchar(255) NOT NULL,
+    `img` TEXT NOT NULL,
+       PRIMARY KEY (id));",
+    "
+
+  CREATE TABLE fonts(
+    id INT(11) NOT NULL AUTO_INCREMENT,
+    `Name` varchar(255) NOT NULL,
+    `url`  varchar(255) NOT NULL,
+       PRIMARY KEY (id));",
+
+  );
+  require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+  foreach ($sql as $value) {
+    dbDelta($value);
+  }
+};
+
+function mkd_core_uninstall()
+{
+  $sql = array(
+    "DROP TABLE IF EXISTS contest_category;",
+    "DROP TABLE IF EXISTS background_images;",
+    "DROP TABLE IF EXISTS fonts;"
+
+  );
+}
+
+
+function game_setting_menus()
+{
+
+  //this is the main item for the menu
+  add_menu_page(
+    'Game Settings', //page title
+    'Game Settings', //menu title
+    'manage_options', //capabilities
+    'game_setting', //menu slug
+    'game_setting' //function
+  );
+
+  //this is a submenu for Contest Category
+  add_submenu_page(
+    'game_setting', //parent slug
+    'Contest Category', //page title
+    'Contest Category', //menu title
+    'manage_options', //capability
+    'game_setting_category_list', //menu slug
+    'game_setting_category_list'
+  ); //function
+
+  //Add Contest Category
+
+  add_submenu_page(
+    null, //parent slug
+    ' Add Contest Category', //page title
+    'Add  Contest Category', //menu title
+    'manage_options', //capability
+    'game_setting_category_add', //menu slug
+    'game_setting_category_add'
+  ); //function
+
+
+  // // Edit Contest Category
+  add_submenu_page(null, //parent slug
+  'Edit Contest Category', //page title
+  'Edit Contest Category', //menu title
+  'manage_options', //capability
+  'game_setting_category_edit', //menu slug
+  'game_setting_category_edit'); //function
+
+  //   //Delete Contest Category
+  add_submenu_page(null, //parent slug
+  'Delete Contest Category', //page title
+  'Delete Contest Category', //menu title
+  'manage_options', //capability
+  'game_setting_category_delete', //menu slug
+  'game_setting_category_delete'); //function
+
+
+
+  //   //this is a submenu for Content Background Images
+  // add_submenu_page(
+  //   'game_setting', //parent slug
+  //   'Content Background Images', //page title
+  //   'Content Background Images', //menu title
+  //   'manage_options', //capability
+  //   'game_setting_content_background_images_list', //menu slug
+  //   'game_setting_content_background_images_list'
+  // ); //function
+
+  // //Add Content Background Images
+
+  // add_submenu_page(
+  //   null, //parent slug
+  //   'Add Content Background Images', //page title
+  //   'Add Content Background Images', //menu title
+  //   'manage_options', //capability
+  //   'game_setting_content_background_images_add', //menu slug
+  //   'game_setting_content_background_images_add'
+  // ); //function
+
+
+  //    // Edit Contest Category
+  //    add_submenu_page(null, //parent slug
+  //    'Edit Content Background Images', //page title
+  //    'Edit Content Background Images', //menu title
+  //    'manage_options', //capability
+  //    'game_setting_contentBackgroundImages_edit', //menu slug
+  //    'game_setting_contentBackgroundImages_edit'); //function
+
+  //      //Delete Contest Category
+  //    add_submenu_page(null, //parent slug
+  //    'Delete Content Background Images', //page title
+  //    'Delete Content Background Images', //menu title
+  //    'manage_options', //capability
+  //    'game_setting_contentBackgroundImages_delete', //menu slug
+  //    'twe_automations_contentBackgroundImages_delete'); //function
+
+  //this is a submenu for fonts
+  // add_submenu_page(
+  //   'game_setting', //parent slug
+  //   'Fonts', //page title
+  //   'Fonts', //menu title
+  //   'manage_options', //capability
+  //   'game_setting_fonts_list', //menu slug
+  //   'game_setting_fonts_list'
+  // ); //function
+
+  //Add  Fonts
+
+  add_submenu_page(
+    null, //parent slug
+    ' Add Fonts', //page title
+    'Add  Fonts', //menu title
+    'manage_options', //capability
+    'game_setting_fonts_add', //menu slug
+    'game_setting_fonts_add'
+  ); //function
+
+
+  // // Edit Contest Category
+  // add_submenu_page(null, //parent slug
+  // 'Edit Fonts', //page title
+  // 'Edit Fonts', //menu title
+  // 'manage_options', //capability
+  // 'game_setting_fonts_edit', //menu slug
+  // 'game_setting_fonts_edit'); //function
+
+  //   //Delete Contest Category
+  // add_submenu_page(null, //parent slug
+  // 'Delete Fonts', //page title
+  // 'Delete Fonts', //menu title
+  // 'manage_options', //capability
+  // 'game_setting_fonts_delete', //menu slug
+  // 'twe_automations_fonts_delete'); //function
+
+
+}
+
+register_deactivation_hook(__FILE__, 'mkd_core_uninstall');
+register_uninstall_hook( __FILE__, 'mkd_core_uninstall' );
+register_activation_hook( __FILE__, 'mkd_core_install' );
+add_action('admin_menu', 'game_setting_menus');
+
+include(plugin_dir_path(__FILE__) . '/portfolio_function.php');
+add_shortcode('mkd_portfolio', 'portfolio_function');
+require_once(ROOTDIR . 'includes/game_setting.php');
+//Display Lists
+require_once(ROOTDIR . 'includes/list/contest_category_list.php');
+require_once(ROOTDIR . 'includes/list/content_background_images_list.php');
+require_once(ROOTDIR . 'includes/list/fonts_list.php');
+
+//Add
+require_once(ROOTDIR . 'includes/add/contest_category_add.php');
+require_once(ROOTDIR . 'includes/add/content_background_images_add.php');
+require_once(ROOTDIR . 'includes/add/fonts_add.php');
+
+//Edit
+require_once(ROOTDIR . 'includes/edit/contest_category_edit.php');
+
+//Delete
+require_once(ROOTDIR . 'includes/delete/contest_category_delete.php');
